@@ -2,7 +2,7 @@ rr
 ==
 Bash scripts: useful, fun to write, disorganized, easy to forget, easy to lose. Let's address some negatives!
 
-rr is a compact Bash meta-script, which organizes and runs other scripts:
+rr is a compact meta-script, which organizes and runs other scripts:
 ```bash
 # rr
 The core /usr/local/libexec/rr module directory does not exist! Try making it.
