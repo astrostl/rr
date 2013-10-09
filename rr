@@ -1,0 +1,29 @@
+#!/bin/bash
+moduledir='/usr/local/libexec/rr'
+modwarg="${moduledir}/${1}"
+
+if [[ ! -d $moduledir ]]; then
+  echo "The main $moduledir module directory does not exist! Try making it."
+elif [[ -d $modwarg ]]; then
+  shopt -s nullglob
+  files=("${modwarg}"/*)
+  if ((${#files[@]} == 0 )); then
+    echo "$modwarg is empty! Try making a script and/or a dir."
+  fi
+  for file in "${files[@]}"; do
+    echo -n "${file##*/}"
+    if [[ -f $file ]]; then
+      while read -r line; do
+        [[ $line = '###'* ]] && desc="${line/'###'/ =>}"
+      done < "$file"
+      echo "${desc:- => No description! Add one by starting a line with ###}"
+      unset desc
+    elif [[ -d $file ]]; then
+      echo '/'
+    fi
+  done
+elif [[ -f $modwarg ]]; then
+  /bin/bash $( ((debug == 1)) && echo -n '-x ' ) "$modwarg" "${@:2}"
+else
+  echo "usage: [debug=1] $0 [module | command]"
+fi
