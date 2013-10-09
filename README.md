@@ -32,7 +32,7 @@ hello => returns a friendly greeting
 Now let's run it:
 ```bash
 # rr hellp
-usage: [debug=1] /usr/local/sbin/rr [module | command]
+usage: [debug=1] /usr/local/sbin/rr [module|command]
 ```
 
 Oops! Typo. Anything invalid yields usage. Let's try again:

@@ -25,5 +25,5 @@ elif [[ -d $modwarg ]]; then
 elif [[ -f $modwarg ]]; then
   /bin/bash $( ((debug == 1)) && echo -n '-x ' ) "$modwarg" "${@:2}"
 else
-  echo "usage: [debug=1] $0 [module | command]"
+  echo "usage: [debug=1] $0 [module|command]"
 fi
